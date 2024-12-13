@@ -1,0 +1,20 @@
+{
+    "name": "humpff/default-wp-theme",
+    "type": "wordpress-theme",
+    "description": "The Default WordPress theme managed via Composer.",
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "keywords": [
+		"WordPress",
+		"Themes"
+	],
+    "homepage": "https://github.com/Amiejah/default-theme-composer.git",
+    "authors": [
+		{
+			"name": "Humpff",
+			"homepage": "https://humpff.com"
+		}
+	]
+
+}
