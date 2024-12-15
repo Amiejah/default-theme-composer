@@ -10,3 +10,10 @@ Requires PHP: 8.2
 Version: 1.0
 Text Domain: defaulttheme
 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: lightgray;
+}
