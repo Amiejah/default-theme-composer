@@ -62,7 +62,7 @@ trait Resolver
         }
 
         $url = HUMPFF_ASSETS_URI . '/' . $this->manifest[$relativePath]['file'];
-
+        
         return apply_filters('humpff/assets/resolver/url', $url, $path);
     }
 }
