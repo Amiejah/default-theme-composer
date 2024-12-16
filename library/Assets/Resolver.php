@@ -13,7 +13,6 @@ trait Resolver
     {
         $path = humpff()->config()->get('manifest.path');
 
-        
         if (empty($path) || ! file_exists($path)) {
             wp_die(__('Run <code>npm run build</code> in your application root!', 'humpff'));
         }
@@ -63,9 +62,7 @@ trait Resolver
         }
 
         $url = HUMPFF_ASSETS_URI . '/' . $this->manifest[$relativePath]['file'];
-        
-        var_dump($url);
-        
+
         return apply_filters('humpff/assets/resolver/url', $url, $path);
     }
 }
