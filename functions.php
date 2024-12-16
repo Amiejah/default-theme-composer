@@ -2,13 +2,13 @@
 
 
 //TODO: Fix the  issue with the constants
+define('WP_ENVIRONMENT_TYPE', 'development');
 define('HUMPFF_VERSION', '0.1.1');
 define('HUMPFF_ROOT', str_replace(ABSPATH, '/', dirname(__DIR__)));
 define('HUMPFF_PATH', dirname(__DIR__, 1) );
 define('HUMPFF_URI', home_url(HUMPFF_ROOT));
-// define('HUMPFF_HMR_HOST', get_home_url() . ':5173');
-define('HUMPFF_HMR_HOST', 'http://localhost:5173');
 
+define('HUMPFF_HMR_HOST', 'http://localhost:5173');
 
 define('HUMPFF_HMR_URI', HUMPFF_HMR_HOST . HUMPFF_ROOT);
 
