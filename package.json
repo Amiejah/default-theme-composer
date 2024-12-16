@@ -1,4 +1,9 @@
 {
+  "name": "default-theme",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Default WordPress Template ",
+  "author": "Humpff <info@humpff.com>",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,5 +15,13 @@
     "postcss-preset-env": "^10.1.2",
     "turbolinks": "^5.2.0",
     "vite": "^6.0.3"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.7",
+    "favicons": "^7.2.0",
+    "lightningcss": "^1.28.2",
+    "set-scrollbar-width": "^1.0.5",
+    "sharp": "^0.33.5",
+    "tailwind-container-break-out": "^2.0.9"
   }
 }

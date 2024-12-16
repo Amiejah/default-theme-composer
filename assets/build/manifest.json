@@ -1,0 +1,13 @@
+{
+  "resources/scripts/main.js": {
+    "file": "main-gLnj4kDE.js",
+    "name": "main",
+    "src": "resources/scripts/main.js",
+    "isEntry": true
+  },
+  "resources/styles/main.css": {
+    "file": "main-D16SMWqU.css",
+    "src": "resources/styles/main.css",
+    "isEntry": true
+  }
+}
