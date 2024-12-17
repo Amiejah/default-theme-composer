@@ -1,0 +1,13 @@
+{
+  "resources/scripts/main.js": {
+    "file": "main-zqPeOnmR.js",
+    "name": "main",
+    "src": "resources/scripts/main.js",
+    "isEntry": true
+  },
+  "resources/styles/main.css": {
+    "file": "main-wV2PvaOQ.css",
+    "src": "resources/styles/main.css",
+    "isEntry": true
+  }
+}
