@@ -1,7 +1,7 @@
 <?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols
 
 define('HUMPFF_VERSION', '0.1.1');
-define('HUMPFF_ROOT', str_replace(ABSPATH, '/', dirname(__DIR__, 1)));
+define('HUMPFF_ROOT', str_replace(ABSPATH, '/', dirname(__DIR__, 2)));
 define('HUMPFF_PATH', dirname(__DIR__, 1) );
 
 define('HUMPFF_URI', home_url(HUMPFF_ROOT));

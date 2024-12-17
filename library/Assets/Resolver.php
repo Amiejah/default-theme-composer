@@ -12,7 +12,7 @@ trait Resolver
     public function load(): void
     {
         $path = humpff()->config()->get('manifest.path');
-
+        
         if (empty($path) || ! file_exists($path)) {
             wp_die(wp_kses_post(__('Run <code>npm run build</code> in your application root!', 'humpff')));
         }
@@ -46,12 +46,10 @@ trait Resolver
     {
         $url = '';
 
-        echo '<pre>';
-        var_dump($this->manifest);
-        echo '</pre>';
-        
         if (! empty($this->manifest["resources/{$path}"])) {
-            $url = HUMPFF_ASSETS_URI . "/{$this->manifest["resources/{$path}"]['file']}";
+        
+            // $url = HUMPFF_ASSETS_URI . "/{$this->manifest["resources/{$path}"]['file']}";
+            $url = "http://localhost:5173/resources/styles/main.css";
         }
 
         return apply_filters('humpff_assets_resolver_url', $url, $path);
