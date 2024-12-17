@@ -13,16 +13,27 @@ export default defineConfig({
             ],
             publicDirectory: 'assets',
             refresh: true,
-        })
+        }),
+        {
+            name: 'php',
+            handleHotUpdate({ file, server }) {
+                if (file.endsWith('.php')) {
+                    server.ws.send({ type: 'full-reload' });
+                }
+            },
+        },
     ],
-    // server: {
-    //     hmr: {
-    //         host: 'localhost',
-    //     }
-    // },
+    server: {
+        hmr: {
+            host: 'localhost',
+        }
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources'),
         },
+    },
+    build: {
+        assetsDir: '.',
     },
 });

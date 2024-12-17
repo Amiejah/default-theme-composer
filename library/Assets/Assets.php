@@ -15,7 +15,8 @@ class Assets
     {
         
         wp_enqueue_style('theme', $this->resolve('styles/main.css'), [], humpff()->config()->get('version'));
-        wp_enqueue_script('theme', $this->resolve('scripts/main.js'), [], humpff()->config()->get('version'));
+        wp_enqueue_script('theme', $this->resolve('scripts/main.js'), [], humpff()->config()->get('version'), true);
+
     }
 
 }

@@ -4,5 +4,5 @@
 
 html,
 body {
-    @apply bg-black text-white border;
+    @apply bg-purple text-white border;
 }

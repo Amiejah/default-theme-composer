@@ -1,12 +1,12 @@
 {
   "resources/scripts/main.js": {
-    "file": "assets/main-l0sNRNKZ.js",
+    "file": "main-l0sNRNKZ.js",
     "name": "main",
     "src": "resources/scripts/main.js",
     "isEntry": true
   },
   "resources/styles/main.css": {
-    "file": "assets/main-CkfF8Ins.css",
+    "file": "main-w_bt6EJO.css",
     "src": "resources/styles/main.css",
     "isEntry": true
   }
