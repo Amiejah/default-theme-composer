@@ -1,15 +1,17 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from 'tailwindcss';
 import path from 'path';
 
-console.log();
+const ROOT = path.resolve('../../../');
+const BASE = __dirname.replace(ROOT, '');
+
 export default defineConfig({
+    base: process.env.NODE_ENV === 'production' ? `${BASE}/assets/build/` : BASE,
     plugins: [
         laravel({
             input: [
-                'resources/scripts/main.js',
-                'resources/styles/main.css'
+                'resources/styles/main.css',
+                'resources/scripts/main.js'
             ],
             publicDirectory: 'assets',
             refresh: true,
