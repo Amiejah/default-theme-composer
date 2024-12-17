@@ -1,0 +1,20 @@
+{
+  "resources/scripts/main.js": {
+    "file": "assets/main-AoqNBkIb.js",
+    "name": "main",
+    "src": "resources/scripts/main.js",
+    "isEntry": true,
+    "imports": [
+      "resources/styles/main.css"
+    ]
+  },
+  "resources/styles/main.css": {
+    "file": "assets/main-DBynxKTE.js",
+    "name": "main",
+    "src": "resources/styles/main.css",
+    "isEntry": true,
+    "css": [
+      "assets/main-C70kRENA.css"
+    ]
+  }
+}

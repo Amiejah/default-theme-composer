@@ -11,7 +11,7 @@
     <?php wp_body_open(); ?>
     <?php do_action('get_header'); ?>
 
-    <div id="app">
+    <div id="app" class="bg-slate-200 text-black border">
       <?php the_content() ?>
     </div>
 

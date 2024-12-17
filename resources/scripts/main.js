@@ -1,1 +1,1 @@
-console.log('laoaded');
+alert('tsting');

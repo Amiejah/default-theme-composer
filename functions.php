@@ -14,8 +14,8 @@ define('HUMPFF_HMR_URI', HUMPFF_HMR_HOST . HUMPFF_ROOT);
 
 define('HUMPFF_ASSETS_PATH', get_template_directory() . '/assets/build');
 define('HUMPFF_ASSETS_URI', get_template_directory_uri() . '/assets/build');
-define('HUMPFF_RESOURCES_PATH', get_template_directory() . '/resources');
-define('HUMPFF_RESOURCES_URI', get_template_directory_uri() . '/resources');
+define('HUMPFF_RESOURCES_PATH',  '/resources');
+define('HUMPFF_RESOURCES_URI',  '/resources');
 
 // echo '<pre>';
 // var_dump('HUMPFF_ROOT', HUMPFF_ROOT . '<br>');

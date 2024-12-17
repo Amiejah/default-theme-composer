@@ -2,19 +2,31 @@
     "name": "humpff/default-wp-theme",
     "type": "wordpress-theme",
     "description": "The Default WordPress theme managed via Composer.",
-    "require": {
-        "php": "^7.4 || ^8.0"
-    },
-    "keywords": [
-		"WordPress",
-		"Themes"
-	],
     "homepage": "https://github.com/Amiejah/default-theme-composer.git",
-    "authors": [
-		{
+    "authors": [{
 			"name": "Humpff",
 			"homepage": "https://humpff.com"
-		}
-	]
-
+		}],
+    "require": {
+      "php": "^8.2",
+      "illuminate/filesystem": "^11.36"
+    },
+    "autoload": {
+      "psr-4": {
+        "Humpff\\": "library/"
+      }
+    },
+    "scripts": {
+      "lint": "phpcs",
+      "format": "phpcbf"
+    },
+    "require-dev": {
+      "squizlabs/php_codesniffer": "*",
+      "wp-coding-standards/wpcs": "^3.1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }

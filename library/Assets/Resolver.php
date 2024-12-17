@@ -14,32 +14,22 @@ trait Resolver
         $path = humpff()->config()->get('manifest.path');
 
         if (empty($path) || ! file_exists($path)) {
-            wp_die(__('Run <code>npm run build</code> in your application root!', 'humpff'));
+            wp_die(wp_kses_post(__('Run <code>npm run build</code> in your application root!', 'fm')));
         }
 
-        $manifestContent = file_get_contents($path);
-
-        if (false === $manifestContent) {
-            wp_die(__('Unable to read the Vite manifest file.', 'humpff'));
-        }
-
-        $manifest = json_decode($manifestContent, true);
+        $data = humpff()->filesystem()->get($path);
         
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            wp_die(__('The Vite manifest file is not a valid JSON file.', 'humpff'));
+        if (! empty($data)) {
+            $this->manifest = json_decode($data, true);
         }
-
-        $this->manifest = $manifest;
     }
 
     /**
-     * Modify the script tag to use type="module" for HMR or production assets.
-     *
      * @filter script_loader_tag 1 3
      */
     public function module(string $tag, string $handle, string $url): string
     {
-        if (false !== strpos($url, HUMPFF_HMR_HOST) || false !== strpos($url, HUMPFF_ASSETS_URI)) {
+        if ((false !== strpos($url, HUMPFF_HMR_HOST)) || (false !== strpos($url, HUMPFF_ASSETS_URI))) {
             $tag = str_replace('<script ', '<script type="module" ', $tag);
         }
 
@@ -54,15 +44,12 @@ trait Resolver
      */
     private function resolve(string $path): string
     {
-        $relativePath = "resources/{$path}";
+        $url = '';
 
-        if (!isset($this->manifest[$relativePath])) {
-            do_action('humpff/assets/resolver/missing', $path);
-            return '';
+        if (! empty($this->manifest["resources/{$path}"])) {
+            $url = HUMPFF_ASSETS_URI . "/{$this->manifest["resources/{$path}"]['file']}";
         }
 
-        $url = HUMPFF_ASSETS_URI . '/' . $this->manifest[$relativePath]['file'];
-        
-        return apply_filters('humpff/assets/resolver/url', $url, $path);
+        return apply_filters('humpff_assets_resolver_url', $url, $path);
     }
 }

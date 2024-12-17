@@ -6,12 +6,15 @@ use Humpff\Assets\Assets;
 use Humpff\Core\Config;
 use Humpff\Core\Hooks;
 use Humpff\Integrations\Integrations;
+use Illuminate\Filesystem\Filesystem;
 
 class App
 {
     private Assets $assets;
 
     private Config $config;
+
+    private Filesystem $filesystem;
 
     private Integrations $integrations;
 
@@ -21,6 +24,7 @@ class App
     {
         $this->assets = self::init(new Assets());
         $this->config = self::init(new Config());
+        $this->filesystem = self::init(new Filesystem());
         $this->integrations = self::init(new Integrations());
     }
 
@@ -32,6 +36,11 @@ class App
     public function config(): Config
     {
         return $this->config;
+    }
+
+    public function filesystem(): Filesystem
+    {
+        return $this->filesystem;
     }
 
     public function integrations(): Integrations

@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import tailwindcss from 'tailwindcss';
 import path from 'path';
 
+console.log();
 export default defineConfig({
     plugins: [
         laravel({
@@ -10,25 +12,17 @@ export default defineConfig({
                 'resources/styles/main.css'
             ],
             publicDirectory: 'assets',
-        }),
-        {
-            name: 'php',
-            handleHotUpdate({ file, server }) {
-                if (file.endsWith('.php')) {
-                    server.ws.send({ 
-                        type: 'full-reload',
-                        path: '*',
-                    });
-                }
-            }
-        }
+            refresh: true,
+        })
     ],
+    // server: {
+    //     hmr: {
+    //         host: 'localhost',
+    //     }
+    // },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources'),
         },
-    },
-    build: {
-        assetsDir: '.',
     },
 });

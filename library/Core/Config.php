@@ -8,7 +8,6 @@ class Config
 
     public function __construct()
     {
-        // wp_die(wp_get_environment_type());
         $this->config = [
             'version' => wp_get_environment_type() === 'development' ? time() : HUMPFF_VERSION,
             'env' => [
@@ -20,7 +19,9 @@ class Config
                 'client' => get_home_url() . '/@vite/client',
                 'base' => str_replace(home_url(), HUMPFF_HMR_HOST, HUMPFF_RESOURCES_URI),
                 'sources' => HUMPFF_HMR_URI . '/resources',
-                'active' => wp_get_environment_type() === 'development' && ! is_wp_error(wp_remote_get(HUMPFF_HMR_URI)),
+                'active' => true,
+                // 'active' => true
+                // 'active' => wp_get_environment_type() === 'development' && ! is_wp_error(wp_remote_get(HUMPFF_HMR_URI)),
             ],
             'manifest' => [
                 'path' => HUMPFF_ASSETS_PATH . '/manifest.json',
