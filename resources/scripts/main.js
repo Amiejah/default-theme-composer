@@ -1,1 +1,1 @@
-alert('tsting');
+alert('test');

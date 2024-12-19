@@ -14,11 +14,11 @@ trait Resolver
         $path = humpff()->config()->get('manifest.path');
 
         if (empty($path) || ! file_exists($path)) {
-            wp_die(wp_kses_post(__('Run <code>npm run build</code> in your application root!', 'fm')));
+            wp_die(wp_kses_post(__('Run <code>npm run build</code> in your application root!', 'humpff')));
         }
 
         $data = humpff()->filesystem()->get($path);
-        
+
         if (! empty($data)) {
             $this->manifest = json_decode($data, true);
         }
