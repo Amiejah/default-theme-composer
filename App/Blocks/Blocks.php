@@ -3,18 +3,9 @@
 namespace Humpff\Blocks;
 
 use Humpff\Shared\Component;
-use Illuminate\Filesystem\Filesystem;
 
 class Blocks extends Component
 {
-
-    private Filesystem $filesystem;
-
-    public function __construct(Filesystem $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
-
     /**
      * @action init
      */
@@ -23,29 +14,30 @@ class Blocks extends Component
         $this->getBlockJson();
     }
 
-    protected function getBlockJson()
+    protected function getBlockJson(): array
     {
         $blocks = [];
 
         foreach ($this->getJsonFiles(humpff()->config()->get('blocks.path')) as $file) {
             $blocks[] = json_decode(humpff()->filesystem()->get($file), true);
         }
-        
-        dd(collect($blocks));
 
         return $blocks;
     }
 
-    protected function getJsonFiles(string $directory): array
+    protected function getJsonFiles(string $directory, ?array $jsonFiles = []): array
     {
-        $jsonFiles = [];
-        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory));
-
-        foreach ($iterator as $file) {
-            if ($file->isFile() && $file->getExtension() === 'json') {
-                $jsonFiles[] = $file->getPathname();
-            }
+        if (humpff()->filesystem()->missing($directory)) {
+            return [];
         }
+
+        $files = humpff()->filesystem()->allFiles($directory);
+
+        $jsonFiles = humpff()->collections()::make($files)
+            ->filter(fn($file) => $file->getExtension() === 'json')
+            ->map(fn($file) => $file->getPathname())
+            ->merge($jsonFiles)
+            ->all();
 
         return $jsonFiles;
     }

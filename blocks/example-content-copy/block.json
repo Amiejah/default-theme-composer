@@ -1,16 +1,16 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "meta-box/hero-content",
-    "title": "Hero Content",
-    "description": "A custom hero content block that uses MB fields.",
+    "name": "meta-box/example-content",
+    "title": "example Content",
+    "description": "A custom example content block that uses MB fields.",
     "style": [
-        "file:./hero-content.css"
+        "file:./example-content.css"
     ],
     "category": "formatting",
     "icon": "format-quote",
     "keywords": [
-        "hero-content",
+        "example-content",
         "quote"
     ],
     "supports": {
@@ -29,8 +29,8 @@
         },
         "content": {
             "type": "string",
-            "default": "This is a hero content block."
+            "default": "This is a example content block."
         }
     },
-    "render": "file:./hero-content.php"
+    "render": "file:./example-content.php"
 }

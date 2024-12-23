@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "meta-box/example-content",
+    "title": "example Content",
+    "description": "A custom example content block that uses MB fields.",
+    "style": [
+        "file:./example-content.css"
+    ],
+    "category": "formatting",
+    "icon": "format-quote",
+    "keywords": [
+        "example-content",
+        "quote"
+    ],
+    "supports": {
+        "anchor": true
+    },
+    "attributes": {
+        "image": {
+            "type": "object",
+            "default": {
+                "full_url": "https://example.com/photo.png"
+            }
+        },
+        "title": {
+            "type": "string",
+            "default": "Hello, World!"
+        },
+        "content": {
+            "type": "string",
+            "default": "This is a example content block."
+        }
+    },
+    "render": "file:./example-content.php"
+}

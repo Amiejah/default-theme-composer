@@ -33,7 +33,7 @@ class App
         $this->filesystem = self::init(new Filesystem());
         $this->collections = self::init(new Collection());
         $this->integrations = self::init(new Integrations());
-        $this->blocks = self::init(new Blocks($this->filesystem));
+        $this->blocks = self::init(new Blocks());
     }
 
     public function assets(): Assets
