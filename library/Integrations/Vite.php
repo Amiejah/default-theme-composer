@@ -13,10 +13,10 @@ class Vite
     }
 
     /**
-     * @filter humpff/assets/resolver/url 1 2
+     * @filter humpff_assets_resolver_url 1 2
      */
     public function url(string $url, string $path): string
     {
-        return humpff()->config()->get('hmr.base') . "/{$path}";
+        return humpff()->config()->get('hmr.sources') . "/{$path}";
     }
 }
