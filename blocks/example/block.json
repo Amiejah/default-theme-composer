@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "meta-box/hero-content",
+    "title": "Hero Content",
+    "description": "A custom hero content block that uses MB fields.",
+    "style": [
+        "file:./hero-content.css"
+    ],
+    "category": "formatting",
+    "icon": "format-quote",
+    "keywords": [
+        "hero-content",
+        "quote"
+    ],
+    "supports": {
+        "anchor": true
+    },
+    "attributes": {
+        "image": {
+            "type": "object",
+            "default": {
+                "full_url": "https://example.com/photo.png"
+            }
+        },
+        "title": {
+            "type": "string",
+            "default": "Hello, World!"
+        },
+        "content": {
+            "type": "string",
+            "default": "This is a hero content block."
+        }
+    },
+    "render": "file:./hero-content.php"
+}

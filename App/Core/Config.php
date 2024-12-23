@@ -15,6 +15,7 @@ class Config
                 'mode' => false === strpos(HUMPFF_PATH, ABSPATH . 'wp-content/plugins') ? 'theme' : 'plugin',
             ],
             'hmr' => [
+                'theme_path'   => str_replace('/app/wordpress/', '/', get_template_directory()),
                 'uri' => HUMPFF_HMR_HOST,
                 'client' => HUMPFF_HMR_URI . '/@vite/client',
                 'base' => str_replace(home_url(), HUMPFF_HMR_HOST, HUMPFF_RESOURCES_URI),
@@ -31,6 +32,9 @@ class Config
             ],
             'resources' => [
                 'path' => HUMPFF_PATH . '/resources',
+            ],
+            'blocks' => [
+                'path' => get_template_directory() . '/blocks',
             ],
             'views' => [
                 'path' => HUMPFF_PATH . '/resources/views',
