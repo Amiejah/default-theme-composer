@@ -22,4 +22,4 @@ define('HUMPFF_RESOURCES_PATH',  '/resources');
 define('HUMPFF_RESOURCES_URI',  '/resources');
 
 // load the bootstrap file
-require_once get_template_directory() . '/library/bootstrap.php';
+require_once get_template_directory() . '/App/bootstrap.php';
