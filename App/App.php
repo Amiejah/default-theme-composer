@@ -3,10 +3,12 @@
 namespace Humpff;
 
 use Humpff\Assets\Assets;
+use Humpff\Blocks\Blocks;
 use Humpff\Core\Config;
 use Humpff\Core\Hooks;
 use Humpff\Integrations\Integrations;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 
 class App
 {
@@ -16,7 +18,11 @@ class App
 
     private Filesystem $filesystem;
 
+    private Collection $collections;
+
     private Integrations $integrations;
+
+    private Blocks $blocks;
 
     private static ?App $instance = null;
 
@@ -25,7 +31,9 @@ class App
         $this->assets = self::init(new Assets());
         $this->config = self::init(new Config());
         $this->filesystem = self::init(new Filesystem());
+        $this->collections = self::init(new Collection());
         $this->integrations = self::init(new Integrations());
+        $this->blocks = self::init(new Blocks());
     }
 
     public function assets(): Assets
@@ -41,6 +49,16 @@ class App
     public function filesystem(): Filesystem
     {
         return $this->filesystem;
+    }
+
+    public function collections(): Collection
+    {
+        return $this->collections;
+    }
+
+    public function blocks(): Blocks
+    {
+        return $this->blocks;
     }
 
     public function integrations(): Integrations
