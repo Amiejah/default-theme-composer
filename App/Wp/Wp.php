@@ -95,6 +95,34 @@ class Wp
     }
 
     /**
+     * @filter pre_get_posts
+     * @param \WP_Query $query
+     */
+    public function setSearchFilterByPostType( \WP_Query $query ) {
+        if ( $query->is_search ) {
+            if ( isset( $_GET['post_type'] ) ) {
+                $query->set( 'post_type', $_GET['post_type'] );
+            }
+        }
+        return $query;
+    }
+
+    /**
+     * @filter body_class
+     * @param array $classes
+     */
+    public function setBodyClassByPostType(array $classes): array
+    {
+        global $post;
+
+        if (isset($post)) {
+            $classes[] = "{$post->post_type}-{$post->post_name}";
+        }
+
+        return $classes;
+    }
+
+    /**
      * @action upload_mimes 1 1
      * @param array $mimes
      */
