@@ -3,15 +3,16 @@
 return [
     '$schema' => 'https://schemas.wp.org/trunk/block.json',
     'apiVersion' => 3,
-    'name' => 'hero-content',
+    'name' => 'hero-contentss',
     'meta' => [
-        'title'       => __('Hero Content', 'default'),
+        'title'       => 'Hero Content',
         'id'          => 'hero-content',
-        'description' => __('A custom hero content block', 'default'),
+        'description' => 'A custom hero content block',
         'type'        => 'block',
         'icon'        => 'format-quote',
         'category'    => 'layout',
-        'context'     => 'side',
+        'context'     => 'normal',
+        'render_template' => get_template_directory() . '/blocks/hero-content/template.tmpl.php',
         'supports'    => [
             'align'           => ['wide', 'full'],
             'customClassName' => true,
