@@ -21,5 +21,12 @@ define('HUMPFF_RESOURCES_PATH',  '/resources');
 
 define('HUMPFF_RESOURCES_URI',  '/resources');
 
-// load the bootstrap file
+// Template related constants 
+define( 'DISALLOW_FILE_EDIT', true );
+
+
+// load the bootstrap file -- DON'T REMOVE THIS FILE!
 require_once get_template_directory() . '/App/bootstrap.php';
+
+// Load the template specific functions
+require_once get_template_directory() . '/template-functions/bootstrap.php';
