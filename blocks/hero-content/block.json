@@ -13,9 +13,6 @@
         "hero-content",
         "quote"
     ],
-    "supports": {
-        "anchor": true
-    },
     "attributes": {
         "image": {
             "type": "object",
