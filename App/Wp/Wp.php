@@ -104,4 +104,27 @@ class Wp
 
         return $mimes;
     }
+
+    /**
+     * @action login_head
+     */
+    public function customLoginLogo(): void
+    {
+        echo '<style type="text/css">
+            h1 a {
+                background-image:url('.get_template_directory_uri() . '/images/km-logo.png' .') !important; 
+                background-size: contain !important;
+                background-position: center !important;
+                width: 100% !important;
+            }
+        </style>';
+    }
+
+    /**
+     * @action login_headerurl
+     */
+    public function customLoginLogoUrl(): string
+    {
+        return 'https://kleinmedia.nl';
+    }
 }

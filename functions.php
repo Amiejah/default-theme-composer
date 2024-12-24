@@ -1,6 +1,5 @@
 <?php
 
-
 define('HUMPFF_VERSION', '0.1.1');
 
 define('HUMPFF_ROOT', str_replace('/app/wordpress/', '', get_template_directory()) );
@@ -21,9 +20,7 @@ define('HUMPFF_RESOURCES_PATH',  '/resources');
 
 define('HUMPFF_RESOURCES_URI',  '/resources');
 
-// Template related constants 
-define( 'DISALLOW_FILE_EDIT', true );
-
+define('DISALLOW_FILE_EDIT', true);
 
 // load the bootstrap file -- DON'T REMOVE THIS FILE!
 require_once get_template_directory() . '/App/bootstrap.php';
