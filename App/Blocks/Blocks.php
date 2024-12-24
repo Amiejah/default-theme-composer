@@ -2,16 +2,20 @@
 
 namespace Humpff\Blocks;
 
+use Humpff\Blocks\Concerns\InteractsWithBlockConfig;
 use Humpff\Shared\Component;
 
 class Blocks extends Component
 {
+    use InteractsWithBlockConfig;
+
     /**
      * @action init
      */
     public function init(): void
     {
         $this->getBlockJson();
+        // $this->registerBlocks();
     }
 
     protected function getBlockJson(): array
@@ -27,18 +31,38 @@ class Blocks extends Component
 
     protected function getJsonFiles(string $directory, ?array $jsonFiles = []): array
     {
-        if (humpff()->filesystem()->missing($directory)) {
-            return [];
-        }
+        $files = $this->getFilesFromDirectory($directory) ?: [];
 
-        $files = humpff()->filesystem()->allFiles($directory);
-
-        $jsonFiles = humpff()->collections()::make($files)
+        return collect($files)
             ->filter(fn($file) => $file->getExtension() === 'json')
             ->map(fn($file) => $file->getPathname())
             ->merge($jsonFiles)
             ->all();
-
-        return $jsonFiles;
     }
+
+    protected function getFilesFromDirectory(string $directory): ?array
+    {
+        if (humpff()->filesystem()->missing($directory)) {
+            return null;
+        }
+
+        return humpff()->filesystem()->allFiles($directory);
+    }
+
+
+    // protected function registerBlocks()
+    // {
+    //     register_block_type( 
+    //         dirname(__FILE__) . '/blocks/hero-content'
+    //     );
+    // }
+
+    /**
+     * @action rwmb_meta_boxes
+     */
+    // public function registerMetaboxBlock( $metaboxes ) {
+    //     $metaboxes[] = [];
+
+    //     return $metaboxes;
+    // }
 }

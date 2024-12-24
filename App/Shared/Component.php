@@ -2,11 +2,12 @@
 
 namespace Humpff\Shared;
 
-use Humpff\Contracts\HasComponent;
+use Humpff\Shared\Concerns\InteractsWithComponent;
 
-class Component implements HasComponent
+class Component implements InteractsWithComponent
 {
     protected $__id;
+
     protected $__name;
 
     public function init(): void
