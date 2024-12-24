@@ -26,4 +26,5 @@ define('DISALLOW_FILE_EDIT', true);
 require_once get_template_directory() . '/App/bootstrap.php';
 
 // Load the template specific functions
+require_once get_template_directory() . '/template-functions/TailwindNavWalker.php';
 require_once get_template_directory() . '/template-functions/bootstrap.php';
