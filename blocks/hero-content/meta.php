@@ -3,7 +3,7 @@
 return [
     '$schema' => 'https://schemas.wp.org/trunk/block.json',
     'apiVersion' => 3,
-    'name' => 'hero-contentss',
+    'name' => 'hero-contents',
     'meta' => [
         'title'       => 'Hero Content',
         'id'          => 'hero-content',
