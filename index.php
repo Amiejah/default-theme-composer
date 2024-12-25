@@ -12,18 +12,6 @@
 
     <?php do_action('get_header'); ?>
 
-    <?php
-							wp_nav_menu(
-								[
-									'theme_location' => 'primary',
-									'menu_class'	 => 'nav-menu',
-									'menu_id'        => 'primary-menu',
-									'walker' 		 =>  new TailwindNavWalker(),
-									// 'items_wrap'     => '<ul id="%1$s" class="%2$s" aria-label="submenu">%3$s</ul>',
-								]
-							);
-						?>
-
     <div id="app" class="bg-slate-200 text-black border">
       <?php the_content() ?>
     </div>
