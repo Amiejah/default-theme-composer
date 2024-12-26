@@ -9,13 +9,15 @@
 
   <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
-    <?php do_action('get_header'); ?>
+
+    <?php get_template_part( 'template-parts/layout/header', 'content' );?>
+
 
     <div id="app" class="bg-slate-200 text-black border">
       <?php the_content() ?>
     </div>
 
-    <?php do_action('get_footer'); ?>
+    
     <?php wp_footer(); ?>
   </body>
 </html>

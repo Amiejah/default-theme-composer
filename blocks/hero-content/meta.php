@@ -10,7 +10,7 @@ return [
         'description' => 'A custom hero content block',
         'type'        => 'block',
         'icon'        => 'format-quote',
-        'category'    => 'layout',
+        'category'    => 'km',
         'context'     => 'normal',
         'render_template' => get_template_directory() . '/blocks/hero-content/template.tmpl.php',
         'supports'    => [

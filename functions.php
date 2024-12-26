@@ -1,6 +1,5 @@
 <?php
 
-
 define('HUMPFF_VERSION', '0.1.1');
 
 define('HUMPFF_ROOT', str_replace('/app/wordpress/', '', get_template_directory()) );
@@ -21,5 +20,11 @@ define('HUMPFF_RESOURCES_PATH',  '/resources');
 
 define('HUMPFF_RESOURCES_URI',  '/resources');
 
-// load the bootstrap file
+define('DISALLOW_FILE_EDIT', true);
+
+// load the bootstrap file -- DON'T REMOVE THIS FILE!
 require_once get_template_directory() . '/App/bootstrap.php';
+
+// Load the template specific functions
+require_once get_template_directory() . '/template-functions/TailwindNavWalker.php';
+require_once get_template_directory() . '/template-functions/bootstrap.php';
