@@ -11,7 +11,10 @@ class Wp
      * @action init
      */
     public function init(): void
-    {}
+    {
+                // dd(carbon_get_theme_option('selected_custom_posts_types'));
+    }
+    
 
     /**
      * @action after_setup_theme
@@ -19,6 +22,7 @@ class Wp
     public function afterSetupTheme(): void
     {
         $this->registerCarbonFields();
+
 
         add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );

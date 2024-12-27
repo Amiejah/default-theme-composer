@@ -17,9 +17,4 @@ trait InteractsWithCarbonFields
             'tiktok' => 'TikTok',
         ];
     }
-
-    protected function carbonSelectedPostTypes(): array
-    {
-        return humpff()->wp()->getPostTypes();
-    }
 }

@@ -86,9 +86,13 @@ class Blocks extends Component
         Container::make( 'theme_options', __( 'Configuration' ) )
             ->set_page_parent( $basic_options_container )
             ->add_tab(__('General'), [
-                Field::make('multiselect', 'selected_custom_posts_types', __('Selected post types'))
-                    ->add_options($this->carbonSelectedPostTypes())
-                    ->set_required(true),
+                Field::make('multiselect', 'disabled_types', __('Disable post types'))
+                    ->add_options(
+                        humpff()
+                            ->cptposts()
+                            ->getTypes()
+                            ->toArray()
+                    ),
             ]);
 
     }

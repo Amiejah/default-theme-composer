@@ -7,7 +7,7 @@ use Humpff\Blocks\Blocks;
 use Humpff\Core\Config;
 use Humpff\Core\Hooks;
 use Humpff\Integrations\Integrations;
-use Humpff\Posts\Posts;
+use Humpff\Posts\CptPosts;
 use Humpff\Wp\Wp;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
@@ -26,7 +26,7 @@ class App
 
     private Blocks $blocks;
 
-    private Posts $posts;
+    private CptPosts $cptposts;
 
     private Wp $wp;
 
@@ -40,7 +40,7 @@ class App
         $this->filesystem = self::init(new Filesystem());
         $this->collections = self::init(new Collection());
         $this->integrations = self::init(new Integrations());
-        $this->posts = self::init(new Posts());
+        $this->cptposts = self::init(new CptPosts());
         $this->blocks = self::init(new Blocks());
     }
 
@@ -69,9 +69,9 @@ class App
         return $this->collections;
     }
 
-    public function posts(): Posts
+    public function cptposts(): CptPosts
     {
-        return $this->posts;
+        return $this->cptposts;
     }
 
     public function blocks(): Blocks
