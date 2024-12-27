@@ -60,7 +60,6 @@ class Blocks extends Component
                     ->set_attribute('placeholder', '+1 123 456 7890'),
             ]);
 
-
         Container::make( 'theme_options', __( 'Social Links' ) )
             ->set_page_parent( $basic_options_container )
             ->add_fields([

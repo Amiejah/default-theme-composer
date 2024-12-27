@@ -4,7 +4,7 @@ namespace Humpff\Blocks\Concerns;
 
 trait InteractsWithCarbonFields
 {
-    protected  function socialOptions(): array
+    protected function socialOptions(): array
     {
         return [
             'twitter' => 'Twitter',
@@ -16,5 +16,10 @@ trait InteractsWithCarbonFields
             'snapchat' => 'Snapchat',
             'tiktok' => 'TikTok',
         ];
+    }
+
+    protected function postTypes(): array
+    {
+        return humpff()->wp()->getPostTypes();
     }
 }
