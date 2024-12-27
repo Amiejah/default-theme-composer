@@ -2,6 +2,7 @@
 
 namespace Humpff\Wp;
 
+use Carbon_Fields\Carbon_Fields;
 use Illuminate\Support\Collection;
 
 class Wp
@@ -17,6 +18,8 @@ class Wp
      */
     public function afterSetupTheme(): void
     {
+        $this->registerCarbonFields();
+
         add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
         add_theme_support( 'post-thumbnails' );
@@ -40,6 +43,14 @@ class Wp
 				'script',
 			]
 		);
+    }
+
+    /**
+     * Register Carbon Fields
+     */
+    public function registerCarbonFields()
+    {
+        \Carbon_Fields\Carbon_Fields::boot();
     }
 
     /**
