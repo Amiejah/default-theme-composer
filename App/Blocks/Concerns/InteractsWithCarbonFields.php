@@ -18,7 +18,7 @@ trait InteractsWithCarbonFields
         ];
     }
 
-    protected function postTypes(): array
+    protected function carbonSelectedPostTypes(): array
     {
         return humpff()->wp()->getPostTypes();
     }

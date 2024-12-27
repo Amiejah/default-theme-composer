@@ -51,6 +51,7 @@ class Blocks extends Component
                 // Field::make( 'footer_scripts', 'crb_footer_script', __( 'Footer Script' ) ),
             ]);
 
+
         Container::make( 'theme_options', __( 'Contact' ) )
             ->set_page_parent( $basic_options_container )
             ->add_tab(__('General'), [
@@ -73,14 +74,23 @@ class Blocks extends Component
                             ->set_attribute('type', 'url'),
                     ]),
             ]);
-        
+
         Container::make('theme_options', __('Scripts'))
             ->set_page_parent( $basic_options_container )
             ->add_fields([
-                Field::make( 'header_scripts', 'crb_header_script', __( 'Header Script' ) ),
-                Field::make( 'footer_scripts', 'crb_footer_script', __( 'Footer Script' ) ),
+                Field::make( 'header_scripts', 'header_script', __( 'Header Scripts' ) ),
+                Field::make( 'header_scripts', 'body_scripts', __( 'Body Scripts' ) )
+                    ->set_hook_name('wp_body_open'),
+                Field::make( 'footer_scripts', 'footer_script', __( 'Footer Scripts' ) ),
             ]);
 
+        Container::make( 'theme_options', __( 'Configuration' ) )
+            ->set_page_parent( $basic_options_container )
+            ->add_tab(__('Which types should be activated'), [
+                Field::make('multiselect', 'selected_custom_posts_types', __('Selected post types'))
+                    ->add_options($this->carbonSelectedPostTypes())
+                    ->set_required(true),
+            ]);
 
     }
 
