@@ -51,7 +51,6 @@ class Blocks extends Component
                 // Field::make( 'footer_scripts', 'crb_footer_script', __( 'Footer Script' ) ),
             ]);
 
-
         Container::make( 'theme_options', __( 'Contact' ) )
             ->set_page_parent( $basic_options_container )
             ->add_tab(__('General'), [
@@ -86,7 +85,7 @@ class Blocks extends Component
 
         Container::make( 'theme_options', __( 'Configuration' ) )
             ->set_page_parent( $basic_options_container )
-            ->add_tab(__('Which types should be activated'), [
+            ->add_tab(__('General'), [
                 Field::make('multiselect', 'selected_custom_posts_types', __('Selected post types'))
                     ->add_options($this->carbonSelectedPostTypes())
                     ->set_required(true),
