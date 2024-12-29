@@ -8,11 +8,18 @@ if (! file_exists($composer)) {
 
 require $composer;
 
-if (! function_exists('humpff')) {
+if (!function_exists('crb_load')) {
+    function crb_load()
+    {
+        \Carbon_Fields\Carbon_Fields::boot();
+    }
+    add_action('after_setup_theme', 'crb_load');
+}
+
+if (!function_exists('humpff')) {
     function humpff(): Humpff\App
     {
         return Humpff\App::get();
     }
+    humpff();
 }
-
-humpff();

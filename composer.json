@@ -12,7 +12,8 @@
         "illuminate/filesystem": "^11.36.1",
         "illuminate/collections": "^11.36",
         "illuminate/support": "^11.36",
-        "htmlburger/carbon-fields": "^3.6"
+        "htmlburger/carbon-fields": "^3.6",
+        "jjgrainger/posttypes": "^2.2"
     },
     "autoload": {
       "psr-4": {

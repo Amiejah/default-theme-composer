@@ -4,7 +4,7 @@ namespace Humpff\Blocks\Concerns;
 
 trait InteractsWithCarbonFields
 {
-    protected function socialOptions(): array
+    public function socialOptions(): array
     {
         return [
             'twitter' => 'Twitter',
@@ -15,6 +15,16 @@ trait InteractsWithCarbonFields
             'vimeo' => 'Vimeo',
             'snapchat' => 'Snapchat',
             'tiktok' => 'TikTok',
+        ];
+    }
+
+    public function defaultPostTypes(): array
+    {
+        return [
+            'service' => __('Services'),
+            'team' => __('Teams'),
+            'vacancy' => __('Vacancies'),
+            'faq' => __('FAQ'),
         ];
     }
 }

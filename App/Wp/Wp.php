@@ -2,28 +2,21 @@
 
 namespace Humpff\Wp;
 
-use Carbon_Fields\Carbon_Fields;
-use Illuminate\Support\Collection;
+use Carbon_Fields\Container\Container;
+use Carbon_Fields\Field\Field;
+use Humpff\Blocks\Concerns\InteractsWithCarbonFields;
 
 class Wp
 {
-    /**
-     * @action init
-     */
-    public function init(): void
-    {
-                // dd(carbon_get_theme_option('selected_custom_posts_types'));
-    }
-    
+    use InteractsWithCarbonFields;
+
+    public function init(): void {}
 
     /**
      * @action after_setup_theme
      */
     public function afterSetupTheme(): void
     {
-        $this->registerCarbonFields();
-
-
         add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
         add_theme_support( 'post-thumbnails' );
@@ -47,14 +40,6 @@ class Wp
 				'script',
 			]
 		);
-    }
-
-    /**
-     * Register Carbon Fields
-     */
-    public function registerCarbonFields()
-    {
-        \Carbon_Fields\Carbon_Fields::boot();
     }
 
     /**
@@ -91,22 +76,6 @@ class Wp
         ];
 
         return $categories;
-    }
-
-    /**
-     * Get all post types
-     * @param array $args
-     * @param string $output
-     */
-    public function getPostTypes(array $args = [], string $output = 'objects')
-    {
-        $args = array_merge([
-            'public' => true,
-        ], $args);
-
-        return collect(get_post_types($args, $output))
-            ->map(fn($type) => $type->label)
-            ->toArray();
     }
 
     /**
@@ -149,6 +118,59 @@ class Wp
     }
 
     /**
+     * @action after_setup_theme
+     */
+    public function addThemeOptions()
+    {
+        $basic_options_container = Container::make('theme_options', __('Theme Options'))
+            ->set_page_menu_position(30)
+            ->add_fields([
+                // Field::make( 'header_scripts', 'crb_header_script', __( 'Header Script' ) ),
+                // Field::make( 'footer_scripts', 'crb_footer_script', __( 'Footer Script' ) ),
+            ]);
+
+        Container::make( 'theme_options', __( 'Contact' ) )
+            ->set_page_parent( $basic_options_container )
+            ->add_tab(__('General'), [
+            ])
+            ->add_tab(__('Contact information'), [
+                Field::make('text', 'phone', __('Phone'))
+                    ->set_attribute('placeholder', '+1 123 456 7890'),
+            ]);
+
+        Container::make( 'theme_options', __( 'Social Links' ) )
+            ->set_page_parent( $basic_options_container )
+            ->add_fields([
+                Field::make('complex', 'social_links', __('Social Links'))
+                    ->add_fields([
+                        Field::make('select', 'icon', __('Select an icon'))
+                            // ->add_options($this->socialOptions())
+                            ->add_options([])
+                            ->set_required(true),
+                        Field::make('text', 'link', __('Link'))
+                            ->set_attribute('placeholder', 'https://')
+                            ->set_attribute('type', 'url'),
+                    ]),
+            ]);
+
+        Container::make('theme_options', __('Scripts'))
+            ->set_page_parent( $basic_options_container )
+            ->add_fields([
+                Field::make( 'header_scripts', 'header_script', __( 'Header Scripts' ) ),
+                Field::make( 'header_scripts', 'body_scripts', __( 'Body Scripts' ) )
+                    ->set_hook_name('wp_body_open'),
+                Field::make( 'footer_scripts', 'footer_script', __( 'Footer Scripts' ) ),
+            ]);
+
+        Container::make( 'theme_options', __( 'Configuration' ) )
+            ->set_page_parent( $basic_options_container )
+            ->add_tab(__('General'), [
+                Field::make('multiselect', 'disabled_types', __('Disable post types'))
+                    ->add_options($this->defaultPostTypes()),
+            ]);
+    }
+
+    /**
      * @action login_head
      */
     public function customLoginLogo(): void
@@ -169,5 +191,22 @@ class Wp
     public function customLoginLogoUrl(): string
     {
         return 'https://kleinmedia.nl';
+    }
+
+
+    /**
+     * Get all post types
+     * @param array $args
+     * @param string $output
+     */
+    public function getPostTypes(array $args = [], string $output = 'objects')
+    {
+        $args = array_merge([
+            'public' => true,
+        ], $args);
+
+        return collect(get_post_types($args, $output))
+            ->map(fn($type) => $type->label)
+            ->toArray();
     }
 }
