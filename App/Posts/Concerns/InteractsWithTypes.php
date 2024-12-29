@@ -2,7 +2,6 @@
 
 namespace Humpff\Posts\Concerns;
 
-use Carbon_Fields\Helper\Helper;
 use Illuminate\Support\Collection;
 
 trait InteractsWithTypes
@@ -23,15 +22,23 @@ trait InteractsWithTypes
 
     public function getDisabledTypes(): Collection
     {
-        $this->disabledTypes = Helper::get_theme_option('disabled_types') ?? null;
+        $this->disabledTypes = carbon_get_theme_option('disabled_types') ?? null;
 
         return collect($this->disabledTypes);
     }
 
     public function getFilteredTypes(): Collection
     {
-        return $this->getTypes()->except(
-            $this->getDisabledTypes()->toArray()
-        );
+        if ($this->getDisabledTypes()->isEmpty()) {
+            $this->setTypes(
+                $this->defaultPostTypes()
+            );
+        }
+
+        return $this->getTypes()
+            ->except(
+                $this->getDisabledTypes()
+                ->toArray()
+            );
     }
 }

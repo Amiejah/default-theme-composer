@@ -13,18 +13,16 @@ class CptPosts extends Component
     use InteractsWithCarbonFields;
 
     /**
-     * Initialize the component
+     * Initialize the custom posts types
      * @action carbon_fields_fields_registered
      */
     public function init(): void
     {
-        $this->setTypes(
-            $this->defaultPostTypes()
-        );
-
-        $this->getFilteredTypes()->each(function ($label, $type) {
-            $post = new PostType($type);
-            $post->register();
-        });
+        $this
+            ->getFilteredTypes()
+            ->each(function ($label, $type) {
+                $post = new PostType($type);
+                $post->register();
+            });
     }
 }
