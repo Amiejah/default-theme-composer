@@ -2,7 +2,10 @@
 
 namespace Humpff\Blocks;
 
+use Carbon_Fields\Container\Container;
+use Carbon_Fields\Field\Field;
 use Humpff\Blocks\Concerns\InteractsWithBlockConfig;
+use Humpff\Blocks\Concerns\InteractsWithCarbonFields;
 use Humpff\Blocks\Concerns\InteractsWithMetaConfig;
 use Humpff\Shared\Component;
 use Illuminate\Support\Collection;
@@ -11,6 +14,7 @@ class Blocks extends Component
 {
     use InteractsWithBlockConfig;
     use InteractsWithMetaConfig;
+    use InteractsWithCarbonFields;
 
     /**
      * @action init
@@ -34,4 +38,5 @@ class Blocks extends Component
             $this, 'registerBlocks'
         ]);
     }
+
 }

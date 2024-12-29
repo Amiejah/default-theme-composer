@@ -10,8 +10,10 @@
     "require": {
         "php": "^8.2",
         "illuminate/filesystem": "^11.36.1",
-        "illuminate/collections": "^11.36",
-        "illuminate/support": "^11.36"
+        "illuminate/collections": "^11.36.1",
+        "illuminate/support": "^11.36.1",
+        "htmlburger/carbon-fields": "^3.6.5",
+        "jjgrainger/posttypes": "^2.2.1"
     },
     "autoload": {
       "psr-4": {
