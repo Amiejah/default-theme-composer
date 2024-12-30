@@ -1,7 +1,4 @@
-<div <?= get_block_wrapper_attributes(); ?>>
-    <?= esc_html( $attributes['title'] ); ?>
+<?php echo esc_html( $fields['heading'] ); ?>
 
-    <img src="<?= $attributes['image']['full_url'] ?>">
-    
-    <p><?= $attributes['content'] ?></p>
-</div>
+<p><?php echo $fields['content'] ?></p>
+<?= wp_get_attachment_image($fields['image'], 'full'); ?>

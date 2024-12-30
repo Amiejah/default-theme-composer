@@ -40,6 +40,7 @@ class Config
                 'path' => HUMPFF_PATH . '/resources/views',
             ],
         ];
+        
     }
 
     public function get(string $key): mixed
