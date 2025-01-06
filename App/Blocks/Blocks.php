@@ -7,6 +7,7 @@ use Carbon_Fields\Field;
 use Humpff\Blocks\Concerns\InteractsWithCarbonFields;
 use Humpff\Blocks\Concerns\InteractsWithMetaConfig;
 use Humpff\Shared\Component;
+use Illuminate\Support\Collection;
 
 class Blocks extends Component
 {
@@ -22,16 +23,19 @@ class Blocks extends Component
         $this->installDefaultBlocks();
     }
 
-    public function installDefaultBlocks()
+    public function installDefaultBlocks(): Collection
     {
         return $this->getMetaConfig()->each(function ( $block )
         {
+            $fields = data_get($block, 'fields', []);
+            
+            if ( ! $fields ) {
+                return;
+            }
+
             Block::make($block['name'])
                 ->add_fields(
-                    collect($block['fields'])->map(function ($field) {
-                        return Field::make($field['type'], $field['name'])
-                            ->set_label($field['label']);
-                    })->toArray()
+                    $this->generateFields($fields)
                 )
                 ->set_render_callback( function ( $fields, $attributes, $inner_blocks ) use ($block){
                     ?>
@@ -41,6 +45,8 @@ class Blocks extends Component
                     <?php
                 });
         });
+
+
     }
 
 

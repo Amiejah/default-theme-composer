@@ -2,6 +2,8 @@
 
 namespace Humpff\Blocks\Concerns;
 
+use Carbon_Fields\Field\Field;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 trait InteractsWithMetaConfig
@@ -31,6 +33,26 @@ trait InteractsWithMetaConfig
 
         return collect($blockFiles)
             ->filter(fn($file) => $file->getFileName() === 'meta.php');
+    }
+
+    public function generateFields($fields): array
+    {
+        return collect($fields)->map(function ($item) {
+            $field = Field::make($item['type'], $item['name'])
+                ->set_label($item['label']);
+                
+            #TODO: For now this check if fine, but when more is added we need to refactor this
+            if (Arr::has($item, 'fields')) {
+                $field->add_fields('fields', 
+                    $this->generateFields($item['fields'])
+                );
+
+                $field->set_header_template($item['set_header_template'] ?? null);
+                $field->set_layout($item['set_layout'] ?? null);
+            }
+
+            return $field;
+        })->toArray();
     }
 
     protected function getDirectoryPath(): ?string
